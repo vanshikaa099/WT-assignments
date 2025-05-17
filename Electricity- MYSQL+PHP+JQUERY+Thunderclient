@@ -140,3 +140,28 @@ address = India
 phone = 1234567890
 
 units = 180
+
+//mysql->xampp
+Open phpMyAdmin by going to:
+http://localhost/phpmyadmin/
+
+Create a database called electricity_billing
+
+inside electricity billing->
+
+
+CREATE TABLE consumer (
+  consumer_id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  address VARCHAR(255),
+  phone VARCHAR(20)
+);
+
+CREATE TABLE billing (
+  bill_id INT AUTO_INCREMENT PRIMARY KEY,
+  consumer_id INT,
+  units_consumed INT,
+  bill_amount DECIMAL(10,2),
+  billing_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (consumer_id) REFERENCES consumer(consumer_id)
+);
